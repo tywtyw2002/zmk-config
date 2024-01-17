@@ -28,7 +28,7 @@
    &kp TAB     &kp Q     &kp W      &kp E     &kp R   &kp T             &kp Y      &kp U      &kp I    &kp O     &kp P   &kp LBKT   &kp RBKT  &kp BSLH
  &kp LCTRL     &kp A     &kp S      &kp D     &kp F   &kp G             &kp H      &kp J      &kp K    &kp L  &kp SEMI    &kp SQT    &kp RET
  &kp LSHFT     &kp Z     &kp X      &kp C     &kp V   &kp B             &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
- &kp LCTRL  &kp LALT  &kp LGUI  &kp SPACE  &kp RGUI   &mo 1             &mo 2  &kp GRAVE
+ &kp GLOBE  &kp LALT  &kp LGUI  &kp SPACE  &kp RGUI   &mo 1             &mo 2  &kp GRAVE
             >;
         };
 
@@ -54,8 +54,8 @@
 
         layer_BT_SET {
             bindings = <
- &out OUT_BLE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &none         &none   &none   &none   &none   &none   &none   &none
-        &none         &none         &none         &none        &reset         &none            &none  &out OUT_USB   &none   &none   &none   &none   &none   &none
+ &out OUT_BLE  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &bt BT_SEL 5         &bt BT_SEL 6   &none   &none   &none   &none   &none   &none
+        &none         &none         &none         &none        &sys_reset         &none            &none  &out OUT_USB   &none   &none   &none   &none   &none   &none
         &none         &none         &none         &none         &none         &none            &none         &none   &none   &none   &none   &none   &none
         &none         &none         &none    &bt BT_CLR         &none   &bootloader            &none         &none   &none   &none   &none   &none
         &none         &none         &none        &tog 3         &none         &none            &none         &none
