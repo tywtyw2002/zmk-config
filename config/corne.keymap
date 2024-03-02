@@ -1,0 +1,7 @@
+#include "../keymaps/base.dtsi"
+
+#include "../keymaps/L0_base.dtsi"
+#include "../keymaps/L1_number.dtsi"
+#include "../keymaps/L2_symbol.dtsi"
+#include "../keymaps/L3_fn.dtsi"
+#include "../keymaps/L9_system.dtsi"

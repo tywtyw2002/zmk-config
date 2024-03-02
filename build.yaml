@@ -13,5 +13,5 @@
 #
 ---
 include:
-  - board: nrf52840_m2
-    shield: m60
+  - board: c_esp32s3
+    shield: corne_esp_rl

@@ -1,0 +1,250 @@
+---
+layers:
+- name: BASE
+  layer: L0
+  keymaps:
+  - - - ESC
+      - Q
+      - W
+      - E
+      - R
+      - T
+    - - Y
+      - U
+      - I
+      - O
+      - P
+      - "&bkspc_del"
+
+  - - - TAB
+      - A
+      - S
+      - D
+      - F
+      - G
+    - - H
+      - J
+      - K
+      - L
+      - SEMICOLON
+      - SQT
+
+  - - - "&cmo FN"
+      - "&mt LCTRL Z"
+      - "&mt LALT X"
+      - "&mt LCMD C"
+      - "&mt MEH V"
+      - B
+    - - N
+      - "&mt MEH M"
+      - "&mt RCMD COMMA"
+      - "&mt RALT DOT"
+      - "&mt RCTRL SLASH"
+      - "&lt FN BACKSLASH"
+
+  - - - "&mt GLOBE GRAVE"
+      - "&space_shift"
+      - "&slayer_1"
+    - - "&slayer_2"
+      - ENTER
+      - "&smart_shift"
+
+
+- layer: L1
+  name: Number
+  keymaps:
+  - - - GRAVE
+      - N1
+      - N2
+      - N3
+      - N4
+      - N5
+    - - N6
+      - N7
+      - N8
+      - N9
+      - N0
+      - "&to L0"
+
+  - - - F1
+      - F2
+      - F3
+      - F4
+      - F5
+      - F6
+    - - F7
+      - F8
+      - F9
+      - F10
+      - F11
+      - F12
+
+  - - - "&tog L1"
+      - "&sk LCTRL"
+      - "&sk LALT"
+      - "&sk LCMD"
+      - MEH
+      - "&sk GLOBE"
+    - - GLOBE
+      - MEH
+      - RCMD
+      - RALT
+      - RCTRL
+      - _
+
+  - - - _ # mesh
+      - LSHIFT
+      - .
+    - - _
+      - LSHIFT
+      - _
+
+
+- layer: L2
+  name: symbol
+  keymaps:
+  - - - TILDE
+      - EXCL
+      - AT
+      - HASH
+      - DLLR
+      - PRCNT
+    - - CARET
+      - AMPS
+      - ASTRK
+      - LPAR
+      - RPAR
+      - MINUS
+
+  - - - _
+      - LBRC
+      - RBRC
+      - UNDER
+      - PLUS
+      - _
+    - - _
+      - _
+      - _
+      - LBKT
+      - RBKT
+      - EQUAL
+
+  - - - "&to L0"
+      - _
+      - _
+      - _
+      - _
+      - _
+    - - "&to_system"  # to system layer for right only?
+      - _
+      - _
+      - _
+      - _
+      - "&tog L2"
+
+  - - - _
+      - LSHIFT
+      - _
+    - - .
+      - RSHIFT
+      - _
+
+
+- layer: L3
+  name: fn
+  keymaps:
+  - - - _
+      - _
+      - _
+      - _
+      - C_BRI_DN
+      - C_BRI_UP
+    - - C_PREV
+      - C_NEXT
+      - C_PP
+      - C_VOL_DN
+      - C_VOL_UP
+      - C_MUTE
+
+  - - - _
+      - _
+      - "&to L9"
+      - _
+      - _
+      - _
+    - - LEFT
+      - DOWN
+      - UP
+      - RIGHT
+      - _
+      - _ # mute mic
+
+  - - - _
+      - _
+      - _
+      - _
+      - _
+      - _
+    - - _
+      - _
+      - _
+      - _
+      - _
+      - _
+
+  - - - _
+      - _
+      - _
+    - - _
+      - _
+      - _
+
+
+- name: SYSTEM
+  layer: L9
+  keymaps:
+  - - - "&out OUT_BLE"
+      - "&bt BT_SEL 0"
+      - "&bt BT_SEL 1"
+      - "&bt BT_SEL 2"
+      - "&bt BT_SEL 3"
+      - "&bt BT_SEL 4"
+    - - _
+      - _
+      - _
+      - _
+      - _
+      - _
+
+  - - - "&out OUT_USB"
+      - _
+      - _
+      - _
+      - _
+      - _
+    - - _
+      - _
+      - _
+      - _
+      - _
+      - _
+
+  - - - "&sys_reset"
+      - _
+      - _
+      - "&bt_clear"
+      - _
+      - "&bootloader"
+    - - "&bootloader"
+      - _
+      - _
+      - _
+      - _
+      - "&sys_reset"
+
+  - - - _
+      - LSHIFT
+      - "&to L0"
+    - - "&to L0"
+      - _
+      - _

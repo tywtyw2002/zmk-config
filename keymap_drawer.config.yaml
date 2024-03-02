@@ -1,0 +1,647 @@
+draw_config:
+  # key dimensions, non-ortho layouts use key_h for width as well
+  # key_w: 100 # This doesn't seem to do anything? 🤔
+  key_h: 80
+
+  # keys border radius
+  key_rx: 4
+  key_ry: 4
+
+  # key labels line spacing for multi-line labels
+  line_spacing: 1
+
+  # combo box dimensions
+  combo_w: 36
+  combo_h: 36
+
+  # padding from the edge of cap to top and bottom legends
+  small_pad: 4
+
+  # Padding between keys
+  inner_pad_w: 1.5
+  inner_pad_h: 1.5
+
+  # padding between layers
+  outer_pad_w: 0
+  outer_pad_h: 0
+
+  # gap between two halves for ortho layout generator
+  # split_gap: 20 # This doesn't seem to have any effect either? 🤔
+
+  # as it reads on the tin can, this comment is here for consistency
+  append_colon_to_layer_header: false
+
+  # shrink font size for legends wider than this many chars, set to 0 to disable
+  # ideal value depends on the font size defined in svg_style and width of the boxes
+  shrink_wide_legends: 5
+
+  # Glyphs dimensions
+  glyph_tap_size: 26
+  glyph_hold_size: 18
+  glyph_shifted_size: 18
+
+  # Custom CSS
+  svg_style: |
+    /* latin-ext */
+    @font-face {
+      font-family: 'REM';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: local("Symbols Nerd Font");
+      unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* latin
+    @font-face {
+      font-family: 'REM';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: local("SF Pro Rounded");
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    */
+
+    /* inherit to force styles through use tags */
+    svg path {
+        fill: inherit;
+    }
+
+    /* font and background color specifications */
+    svg.keymap {
+        /*
+         * ====================
+         * Theme Variables
+         * ====================
+         */
+
+        --logo-path: none;
+        --logo-size: 12%;
+        --logo-position: 49.5% 5%;
+
+        /* === Colors === */
+        --color-bg-1: rgb(0, 0, 0);
+        --color-bg-2: rgb(28, 28, 30);
+        --color-bg-3: rgb(44, 44, 46);
+        --color-label-1: rgba(255, 255, 255, 1);
+        --color-label-2: rgba(235, 235, 245, 0.6);
+        --color-label-3: rgba(235, 235, 245, 0.3);
+        --color-label-4: rgba(235, 235, 245, 0.18);
+        --color-fill-1: rgba(120, 120, 128, 0.36);
+        --color-fill-2: rgba(120, 120, 128, 0.32);
+        --color-fill-3: rgba(118, 118, 128, 0.24);
+        --color-fill-4: rgba(118, 118, 128, 0.18);
+        --color-placeholder: rgba(235, 235, 245, 0.3);
+        --color-separator: rgba(84, 84, 88, 0.6);
+        --color-separator-fill: rgba(56, 56, 58, 1);
+        --color-gray-1: rgb(142, 142, 147);
+        --color-gray-2: rgb(99, 99, 102);
+        --color-gray-3: rgb(72, 72, 74);
+        --color-gray-4: rgb(58, 58, 60);
+        --color-gray-5: rgb(44, 44, 46);
+        --color-gray-6: rgb(28, 28, 30);
+        --color-blue: rgb(10, 132, 255);
+        --color-green: rgb(48, 209, 88);
+        --color-indigo: rgb(94, 92, 230);
+        --color-orange: rgb(255, 159, 10);
+        --color-pink: rgb(255, 55, 95);
+        --color-purple: rgb(191, 90, 242);
+        --color-red: rgb(255, 69, 58);
+        --color-teal: rgb(100, 210, 255);
+        --color-yellow: rgb(255, 214, 10);
+
+        --color--bg: var(--color-bg-2);
+        --color--text: var(--color-label-2);
+
+        --color--layer--text: var(--color-blue);
+
+        --color--key--bg: var(--color-bg-3);
+        --color--key--border: transparent;
+        --color--key--text--tap: var(--color--text);
+        --color--key--text--shifted: var(--color-label-3);
+        --color--key--text--hold: var(--color-label-3);
+
+        --color--combo--bg: var(--color-gray-3);
+        --color--combo--border: transparent;
+        --color--combo--dendron: var(--color-separator);
+        --color--combo--text--tap: var(--color--text);
+        --color--combo--text--shifted: var(--color-label-3);
+        --color--combo--text--hold: var(--color--combo--text--tap);
+
+        --color--trans--bg: rgb(26, 33, 41);
+        --color--trans--border: transparent;
+        --color--trans--text--tap: var(--color-label-3);
+        --color--trans--text--shifted: var(--color--trans--text--tap);
+        --color--trans--text--hold: var(--color--trans--text--tap);
+
+        --color--none--bg: rgb(32, 32, 35);
+        --color--none--border: transparent;
+        --color--none--text--tap: var(--color--trans--text--tap);
+        --color--none--text--shifted: var(--color--trans--text--shifted);
+        --color--none--text--hold: var(--color--trans--text--hold);
+
+        --color--ghost--bg: var(--color--none--bg);
+        --color--ghost--border: transparent;
+        --color--ghost--text--tap: var(--color--trans--text--tap);
+        --color--ghost--text--shifted: var(--color--trans--text--shifted);
+        --color--ghost--text--hold: var(--color--trans--text--shifted);
+
+        /*
+         * ====================
+         * /End Theme Variables
+         * ====================
+         */
+
+        font-family: REM, "SF Pro Rounded", monospace;
+        font-size: 24px;
+        font-kerning: normal;
+        text-rendering: optimizeLegibility;
+        fill: var(--color--text);
+        background-color: var(--color--bg);
+        background-image: var(--logo-path);
+        background-repeat: no-repeat;
+        background-position: var(--logo-position);
+        background-size: var(--logo-size) auto;
+    }
+
+    rect,
+    path {
+      shape-rendering: geometricPrecision;
+    }
+
+    text {
+        text-anchor: middle;
+        dominant-baseline: middle;
+        line-height: 1;
+    }
+
+    /* Layer labels */
+    text.label {
+        font-weight: 500;
+        text-anchor: start;
+        paint-order: stroke;
+        fill: var(--color--layer--text);
+        dominant-baseline: text-before-edge;
+        font-variant: all-small-caps;
+    }
+
+
+    /* Keys */
+    rect.key,
+    rect.combo {
+        fill: var(--color--key--bg);
+        stroke: var(--color--key--border);
+    }
+    .tap {
+        fill: var(--color--key--text--tap);
+    }
+    .shifted,
+    .hold {
+        font-size: 18px;
+        text-anchor: middle;
+    }
+    .shifted {
+        dominant-baseline: hanging;
+        fill: var(--color--key--text--shifted);
+        translate: -25px 2px;
+    }
+    .hold {
+        dominant-baseline: ideographic;
+        fill: var(--color--key--text--hold);
+    }
+
+    /*
+     * Combos
+     */
+    .combo {
+        --color--key--bg: var(--color--combo--bg);
+        --color--key--border: var(--color--combo--border);
+        --color--key--text--tap: var(--color--combo--text--tap);
+        --color--key--text--shifted: var(--color--combo--text--shifted);
+        --color--key--text--hold: var(--color--combo--text--hold);
+    }
+    rect.combo {
+        stroke-width: 0;
+    }
+    path.combo {
+        stroke-width: 1;
+        stroke: var(--color--combo--dendron);
+        stroke-dasharray: 2, 2;
+        fill: none;
+    }
+    .combo.tap {
+        font-size: 16px;
+    }
+    .combo.shifted {
+        font-size: 13px;
+        translate: -9px -2px;
+    }
+    .combo.hold {
+        font-size: 16px;
+        /* translate: 2px 0px; */
+    }
+
+    .trans {
+        --color--key--bg: var(--color--trans--bg);
+        --color--key--border: var(--color--trans--border);
+        --color--key--text--tap: var(--color--trans--text--tap);
+        --color--key--text--shifted: var(--color--trans--text--shifted);
+        --color--key--text--hold: var(--color--trans--text--hold);
+    }
+    .none {
+        --color--key--bg: var(--color--none--bg);
+        --color--key--border: var(--color--none--border);
+        --color--key--text--tap: var(--color--none--text--tap);
+        --color--key--text--shifted: var(--color--none--text--shifted);
+        --color--key--text--hold: var(--color--none--text--hold);
+    }
+    .ghost {
+        --color--key--bg: var(--color--ghost--bg);
+        --color--key--border: var(--color--ghost--border);
+        --color--key--text--tap: var(--color--ghost--text--tap);
+        --color--key--text--shifted: var(--color--ghost--text--shifted);
+        --color--key--text--hold: var(--color--ghost--text--hold);
+    }
+
+
+    /*
+     * Overrides
+     */
+    .shifted.mdi\:alpha-w-box {
+      translate: 25px 0px;
+    }
+    .shifted.mdi\:layers {
+      translate: 25px 0px;
+    }
+    .shifted.mdi\:layers-plus {
+      translate: 25px 0px;
+    }
+    .shifted.mdi\:usb {
+      translate: -25px 25px;
+    }
+    .hold.mdi\:bluetooth {
+      translate: 25px -25px;
+    }
+
+    /* Outer column + thumb keys */
+    .keypos-36,
+    .keypos-37,
+    .keypos-38,
+    .keypos-39,
+    .keypos-40,
+    .keypos-41 {
+        --color--key--bg: rgb(35, 45, 56);
+    }
+
+parse_config:
+  mark_alternate_layer_activators: true
+  sticky_label: $$mdi:gesture-tap-hold$$
+  trans_legend:
+    tap: $$mdi:transfer$$
+    type: trans
+
+  raw_binding_map:
+    # Layers
+    "&slayer_1":
+      shifted: $$mdi:layers-plus$$
+      tap: L1
+      hold: $$mdi:gesture-tap-hold$$
+    "&slayer_2":
+      shifted: $$mdi:layers-plus$$
+      tap: L2
+      hold: $$mdi:gesture-tap-hold$$
+    "&tog L1":
+      tap: $$mdi:layers-triple$$
+      hold: L1
+    "&tog L2":
+      tap: $$mdi:layers-triple$$
+      hold: L2
+    "&csl Fn":
+      tap: "$$mdi:web$$"
+      hold: $$mdi:close-box$$
+    "&csl L2":
+      tap: L2
+      hold: $$mdi:close-box$$
+    "&cmo FN":
+      shifted: $$mdi:layers-plus$$
+      hold: Fn
+      tap: $$mdi:close-box$$
+    "&cmo L2":
+      tap: $$mdi:close-box$$
+      hold: L2
+    "&space_shift":
+      tap: "$$mdi:keyboard-space$$"
+      hold: "$$mdi:apple-keyboard-shift$$"
+    "&to_system":
+      tap: "$$mdi:minus-circle-outline$$"
+      shifted: $$mdi:layers-edit$$
+      hold: "L9"
+    "&to L9":
+      tap: $$mdi:layers-edit$$
+      hold: "L9"
+    "&lt FN BACKSLASH":
+      tap: "\\"
+      shifted: '|'
+      hold: "Fn"
+
+    # Modifiers
+    "&caps_word": $$mdi:alpha-w-box$$
+    "&kt RSHIFT":
+      tap: $$mdi:apple-keyboard-shift$$
+      hold: $$mdi:toggle-switch$$
+
+    # Empty
+    "&none":
+      tap: $$mdi:minus-circle-outline$$
+      type: none
+
+    # Whitespace
+    "&bkspc_del":
+      type: backspace
+      tap: $$mdi:backspace$$
+      shifted: $$mdi:backspace-reverse-outline$$
+
+    # Bluetooth
+    "&bt BT_SEL 0":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 1
+    "&bt BT_SEL 1":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 2
+    "&bt BT_SEL 2":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 3
+    "&bt BT_SEL 3":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 4
+    "&bt BT_SEL 4":
+      tap: $$mdi:bluetooth-connect$$
+      hold: 5
+    "&out OUT_TOG":
+      shifted: $$mdi:usb$$
+      tap: $$mdi:toggle-switch$$
+      hold: $$mdi:bluetooth$$
+    "&out OUT_BLE":
+      tap: "$$mdi:bluetooth-transfer$$"
+    "&out OUT_USB":
+      tap: "$$mdi:usb-port$$"
+    "&bt_clear":
+      tap: $$mdi:bluetooth-off$$
+      shifted: $$mdi:check-all$$
+
+
+    # Reset
+    "&sys_reset":
+      type: bootloader
+      tap: $$mdi:backup-restore$$
+    "&bootloader":
+      tap: $$mdi:progress-download$$
+
+    # layer
+    "&to L0":
+      tap: "$$mdi:layers-off$$"
+
+  # ZMK
+  zmk_keycode_map:
+    # Symbols
+    EXCLAMATION: "!"
+    EXCL: "!"
+    AT_SIGN: "@"
+    AT: "@"
+    HASH: "#"
+    POUND: "#"
+    DOLLAR: $
+    DLLR: $
+    PERCENT: "%"
+    PRCNT: "%"
+    CARET: ^
+    AMPERSAND: "&"
+    AMPS: "&"
+    ASTERISK: "*"
+    ASTRK: "*"
+    STAR: "*"
+    LEFT_PARENTHESIS: (
+    LPAR: (
+    RIGHT_PARENTHESIS: )
+    RPAR: )
+    EQUAL:
+      tap: "="
+      shifted: "+"
+    PLUS: +
+    MINUS:
+      tap: "-"
+      shifted: "_"
+    UNDERSCORE: _
+    UNDER: _
+    SLASH:
+      tap: "/"
+      shifted: "?"
+    FSLH:
+      tap: "/"
+      shifted: "?"
+    QUESTION: "?"
+    QMARK: "?"
+    BACKSLASH:
+      tap: '\'
+      shifted: "|"
+    BSLH:
+      tap: '\'
+      shifted: "|"
+    PIPE: "|"
+    NON_US_BACKSLASH: \
+    PIPE2: "|"
+    NON_US_BSLH: "|"
+    SEMICOLON:
+      tap: ";"
+      shifted: ":"
+    SEMI:
+      tap: ";"
+      shifted: ":"
+    COLON: ":"
+    SINGLE_QUOTE:
+      tap: "'"
+      shifted: '"'
+    SQT:
+      tap: "'"
+      shifted: '"'
+    APOSTROPHE: <
+    APOS: .
+    DOUBLE_QUOTES: '"'
+    DQT: '"'
+
+    LESS_THAN: <
+    LT: <
+    DOT:
+      tap: "."
+      shifted: ">"
+    COMMA:
+      tap: ","
+      shifted: "<"
+    GREATER_THAN: ">"
+    GT: ">"
+    LEFT_BRACKET:
+      tap: "["
+      shifted: "{"
+    LBKT:
+      tap: "["
+      shifted: "{"
+    LEFT_BRACE: "{"
+    LBRC: "{"
+    RIGHT_BRACKET:
+      tap: "]"
+      shifted: "}"
+    RBKT:
+      tap: "]"
+      shifted: "}"
+    RIGHT_BRACE: "}"
+    RBRC: "}"
+    GRAVE:
+      tap: "`"
+      shifted: "~"
+    TILDE: "~"
+    NON_US_HASH: "#"
+    NUHS: "#"
+    TILDE2: "~"
+
+    # Numbers
+    N1:
+      tap: 1
+      shifted: "!"
+    N2:
+      tap: 2
+      shifted: "@"
+    N3:
+      tap: 3
+      shifted: "#"
+    N4:
+      tap: 4
+      shifted: "$"
+    N5:
+      tap: 5
+      shifted: "%"
+    N6:
+      tap: 6
+      shifted: "^"
+    N7:
+      tap: 7
+      shifted: "&"
+    N8:
+      tap: 8
+      shifted: "*"
+    N9:
+      tap: 9
+      shifted: "("
+    N0:
+      tap: 0
+      shifted: ")"
+
+    # Modifiers
+    LCTRL: $$mdi:apple-keyboard-control$$
+    LALT: $$mdi:apple-keyboard-option$$
+    LSHIFT: $$mdi:apple-keyboard-shift$$
+    LSHFT: $$mdi:apple-keyboard-shift$$
+    LCMD: $$mdi:apple-keyboard-command$$
+    RCTRL: $$mdi:apple-keyboard-control$$
+    RALT: $$mdi:apple-keyboard-option$$
+    RSHIFT: $$mdi:apple-keyboard-shift$$
+    RSHFT: $$mdi:apple-keyboard-shift$$
+    RCMD: $$mdi:apple-keyboard-command$$
+    # "Meh" key
+    LS(LC(LALT)): $$mdi:star-three-points$$
+
+    # Arrows
+    UP: $$mdi:arrow-up-bold$$
+    DOWN: $$mdi:arrow-down-bold$$
+    LEFT: $$mdi:arrow-left-bold$$
+    RIGHT: $$mdi:arrow-right-bold$$
+
+    # Whitespace
+    ENTER:
+      type: enter
+      tap: $$mdi:keyboard-return$$
+    ESC: $$mdi:keyboard-esc$$
+    TAB: $$mdi:keyboard-tab$$
+    LS(TAB): $$mdi:keyboard-tab-reverse$$
+    SPACE: $$mdi:keyboard-space$$
+    BACKSPACE:
+      type: backspace
+      tap: $$mdi:backspace$$
+    BSPC:
+      type: backspace
+      tap: $$mdi:backspace$$
+    DELETE: $$mdi:backspace-reverse-outline$$
+    DEL: $$mdi:backspace-reverse-outline$$
+    GLOBE: "$$mdi:web$$"
+
+    # Locks
+    CAPSLOCK: $$mdi:apple-keyboard-caps$$
+    CAPS: $$mdi:apple-keyboard-caps$$
+
+    # Sound
+    C_MUTE: $$mdi:volume-off$$
+    C_VOL_UP: $$mdi:volume-high$$
+    C_VOL_DN: $$mdi:volume-low$$
+
+    # Media
+    C_NEXT: $$mdi:skip-next$$
+    C_PREV: $$mdi:skip-previous$$
+    C_PP: $$mdi:play-pause$$
+
+    # Bluetooth
+    BT_CLR: $$mdi:bluetooth-off$$
+    # BT_CLR_ALL: $$mdi:bluetooth-off$$
+    BT_SEL: $$mdi:bluetooth-connect$$
+
+    # Settings
+    C_BRI_UP: $$mdi:brightness-5$$
+    C_BRI_DN: $$mdi:brightness-7$$
+
+    # System
+    C_POWER: $$mdi:power-standby$$
+    C_AL_LOCK: $$mdi:lock$$
+    K_CANCEL: $$mdi:close-box$$
+
+    # Zoom
+    RG(RS(A)):
+      tap: $$mdi:microphone$$
+      hold: zoom
+    RG(RS(V)):
+      tap: $$mdi:video$$
+      hold: zoom
+
+  zmk_combos:
+    combo_to_2:
+      align: top
+    combo_to_3:
+      align: top
+    combo_bt_clear:
+      align: top
+      offset: 0.03
+    combo_mute:
+      align: top
+      offset: 0.15
+    combo_minus:
+      key:
+        shifted: "_"
+        hold: "-"
+    combo_equal:
+      key:
+        shifted: "+"
+        hold: "="
+    combo_backslash:
+      key:
+        shifted: "|"
+        hold: \
+    combo_lbkt:
+      key:
+        shifted: "{"
+        hold: "["
+    combo_rbkt:
+      key:
+        shifted: "}"
+        hold: "]"
+    combo_semicolon:
+      key:
+        shifted: ":"
+        hold: ";"
